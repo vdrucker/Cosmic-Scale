@@ -2,7 +2,7 @@ COSMIC SCALE
 
 <img width="480" height="270" alt="nebula_nav" src="https://github.com/user-attachments/assets/5c58b6e4-7548-4860-8ca2-a3419325c94e" />
 
-Cosmic Scale is a Vite + Three.js + MediaPipe browser atlas, designed wih the intent of placing the cosmos in the palm of your hands.
+Cosmic Scale is a Vite + Three.js + MediaPipe browser atlas, designed with the intent of placing the cosmos in the palm of your hands.
 
 It is meant to feel like a scale instrument: each layer changes the unit of thought while preserving a shared visual grammar, enabling 
 smooth travel to any cosmic object you may see. 
@@ -17,12 +17,26 @@ The main runtime is centered in `src/main.js`. Supporting modules carry the stab
 - `src/scenePrimitives.js`: reusable material, ring, glow, and point-cloud helpers.
 - `src/cosmicRuntimeState.js`: small local-storage persistence seam.
 
-## Run And Verify
+## Run Locally
 
 From the project root:
 
+```powershell
 npm install
 npm run dev
+```
+
+To verify a production build:
+
+```powershell
+npm run build
+```
+
+To validate the catalog:
+
+```powershell
+npm run validate:catalog
+```
 
 ## Layers
 
