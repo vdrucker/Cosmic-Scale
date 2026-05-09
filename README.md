@@ -71,7 +71,9 @@ the Solar System and Stellar Neighborhood layers.
   <img width="480" height="270" alt="hot_world" src="https://github.com/user-attachments/assets/e927cdcf-42ef-4642-b6ad-c9e737ec3ddf" />
 
 - Nebulae: pixel-relief sculptures with morphology-specific silhouettes.
+  
   <img width="480" height="270" alt="star_catalog" src="https://github.com/user-attachments/assets/c46fe076-21c4-47ab-8ac1-f202a837ae1a" />
+
 
 - Pulsars, quasars, and x-ray binaries: pixelated opposing streams.
 - Black holes: pixelated accretion/lensing vocabulary.
