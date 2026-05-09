@@ -7,6 +7,8 @@ Cosmic Scale is a Vite + Three.js + MediaPipe browser atlas, designed with the i
 It is meant to feel like a scale instrument: each layer changes the unit of thought while preserving a shared visual grammar, enabling 
 smooth travel to any cosmic object you may see. 
 
+[Launch the live demo](https://vdrucker.github.io/Cosmic-Scale/)
+
 The main runtime is centered in `src/main.js`. Supporting modules carry the stable seams:
 
 - `src/cosmicCatalog.js`: authored astronomy catalog entries.
