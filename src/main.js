@@ -77,6 +77,14 @@ import {
   catalogWebKnots as rawCatalogWebKnots,
 } from "./cosmicCatalog.js";
 
+function publicAssetPath(path) {
+  if (!path) return path;
+  if (/^(https?:)?\/\//.test(path) || path.startsWith("data:") || path.startsWith("blob:")) {
+    return path;
+  }
+  return `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+}
+
 const {
   stars: catalogStars,
   exoplanetSystems: catalogExoplanetSystems,
@@ -1195,8 +1203,8 @@ const SYSTEM_MOON_VISUAL_SCALE = 1.32;
 const STELLAR_INSPECTION_FLOOR = 2.34;
 const GESTURE_DETECTION_INTERVAL_MS = 58;
 const GESTURE_LOST_GRACE_MS = 360;
-const GESTURE_MODEL_PATH = "/gesture_recognizer.task";
-const GESTURE_WASM_PATH = "/wasm";
+const GESTURE_MODEL_PATH = publicAssetPath("gesture_recognizer.task");
+const GESTURE_WASM_PATH = publicAssetPath("wasm/");
 const GESTURE_SCORE_THRESHOLD = 0.42;
 const HAND_REENTRY_HOLD_MS = 260;
 const HAND_EXIT_HOLD_MS = 620;
@@ -8969,21 +8977,27 @@ function getTextureWorkbenchOptions() {
 }
 
 function loadSourceTexture(path, colorSpace = THREE.SRGBColorSpace, pixelated = true) {
-  const cacheKey = `${path}:${colorSpace}`;
+  const resolvedPath = publicAssetPath(path);
+  const cacheKey = `${resolvedPath}:${colorSpace}`;
+
   if (!sourceTextureCache.has(cacheKey)) {
-    const texture = sourceTextureLoader.load(path, (loadedTexture) => {
+    const texture = sourceTextureLoader.load(resolvedPath, (loadedTexture) => {
       loadedTexture.needsUpdate = true;
       invalidateRenderCaches();
     });
+
     texture.colorSpace = colorSpace;
     texture.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
     texture.wrapS = THREE.RepeatWrapping;
     texture.wrapT = THREE.ClampToEdgeWrapping;
+
     if (pixelated) {
       texture.magFilter = THREE.NearestFilter;
     }
+
     sourceTextureCache.set(cacheKey, texture);
   }
+
   return sourceTextureCache.get(cacheKey);
 }
 
